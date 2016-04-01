@@ -35,7 +35,7 @@
 
 
 				// Ratings retrival
-				$query=mysql_query("Select * from ratings where coursename='$coursename'");
+				$query=mysql_query("Select * from course_ratings where coursename='$coursename'");
 
 				$rat=0; $num=0;
 				while($row=mysql_fetch_array($query)){
@@ -49,7 +49,7 @@
 				}
 
 				echo "<br/><br/><br/>";
-				$query=mysql_query("Select * from comments where coursename='$coursename'");
+				$query=mysql_query("Select * from course_comments where coursename='$coursename'");
 
 				while($row=mysql_fetch_array($query)){
 					print "Username: " .$row['username']. "<br/>";

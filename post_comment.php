@@ -13,7 +13,7 @@
 		$username=$user;
 		$comment=mysql_real_escape_string($_POST['comment']);
 
-		mysql_query("Insert into comments (comment,coursename,username) values ('$comment','$coursename','$username')");
+		mysql_query("Insert into course_comments (comment,coursename,username) values ('$comment','$coursename','$username')");
 		header("location:course.php?coursename=$coursename");
 	}else{
 		header("location:index.php");

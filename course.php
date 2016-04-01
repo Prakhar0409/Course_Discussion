@@ -134,7 +134,7 @@
 
 
 				// Ratings retrival
-				$query=mysql_query("Select * from ratings where coursename='$coursename'");
+				$query=mysql_query("Select * from course_ratings where coursename='$coursename'");
 
 				$rat=0; $num=0;
 				while($row=mysql_fetch_array($query)){
@@ -152,7 +152,7 @@
 				mysql_query("Update courses SET rating=$netRate where coursename='$coursename'");
 
 				echo "<br/><br/><br/>";
-				$query=mysql_query("Select * from comments where coursename='$coursename'");
+				$query=mysql_query("Select * from course_comments where coursename='$coursename'");
 
 				while($row=mysql_fetch_array($query)){
 					print "<span class='text-danger'>".$row['username']. " says</span> :: ";

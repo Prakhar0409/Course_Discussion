@@ -245,7 +245,7 @@ include 'credentials.php';
 		$userAlreadyExists=false;
 		mysql_connect($DB_HOST,$DB_USER,$DB_PASS) or die(mysql_error());
 		mysql_select_db($DB) or die("Unable to connect to chat database");
-		$query=mysql_query("select * from users");
+		$query=mysql_query("select * from course_users");
 		while($row=mysql_fetch_array($query)){
 			if($username==$row['username']){
 				$userAlreadyExists=true;

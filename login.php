@@ -234,7 +234,7 @@ include 'credentials.php';
 
 		mysql_connect($DB_HOST,$DB_USER,$DB_PASS) or die(mysql_error());
 		mysql_select_db($DB) or die("Unable to connect ot the database");
-		$query=mysql_query("select * from users where BINARY username='$username' and password='$password'");
+		$query=mysql_query("select * from course_users where BINARY username='$username' and password='$password'");
 		$exist=mysql_num_rows($query);
 		if($exist>0){
 			//such a user exists
