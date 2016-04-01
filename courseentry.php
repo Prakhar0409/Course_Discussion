@@ -1,3 +1,7 @@
+<?php 
+	include 'credentials.php';
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -20,8 +24,8 @@
 
 <?php
 	if($_SERVER['REQUEST_METHOD']=='POST'){
-		mysql_connect("127.0.0.1","root","");
-		mysql_select_db("bsp_db") or die("failed to connect to the database");
+		mysql_connect($DB_HOST,$DB_USER,$DB_PASS);
+		mysql_select_db($DB) or die("failed to connect to the database");
 		$coursecode=mysql_real_escape_string($_POST['coursecode']);
 		$coursename=mysql_real_escape_string($_POST['coursename']);
 		$details=mysql_real_escape_string($_POST['details']);

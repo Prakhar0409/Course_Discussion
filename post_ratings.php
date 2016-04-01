@@ -1,8 +1,12 @@
 <?php
+
+ 
+	include 'credentials.php';
+
 	session_start();
 	if($_SESSION['user'] && $_SERVER['REQUEST_METHOD']=='POST'){
-		mysql_connect("127.0.0.1","root","");
-		mysql_select_db("bsp_db");
+		mysql_connect($DB_HOST,$DB_USER,$DB_PASS);
+		mysql_select_db($DB);
 
 		$user=$_SESSION['user'];
 		echo 'hey';

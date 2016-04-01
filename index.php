@@ -1,3 +1,7 @@
+<?php 
+include 'credentials.php';
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,7 +10,7 @@
 	<meta name="description" content="">
 	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
 	
-	<title>Progressus - Free business bootstrap template by GetTemplate</title>
+	<title>Course Details - Courserator</title>
 
 	<link rel="shortcut icon" href="assets/images/gt_favicon.png">
 	
@@ -30,6 +34,7 @@
 
 
 <!--FACEBOOK SDK-->
+<!-- 
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -38,7 +43,7 @@
   js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.5&appId=996700463749753";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
-
+ -->
 
 
  <!-- Fixed navbar -->
@@ -91,7 +96,9 @@
 		</div>
 	</header>
 
-	<div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div>
+
+	<!-- Facebook login button -->
+	<!-- <div class="fb-login-button" data-max-rows="1" data-size="medium" data-show-faces="false" data-auto-logout-link="false"></div> -->
 
 	<!-- /Header -->
 

@@ -1,4 +1,8 @@
 <?php
+
+ 
+	include 'credentials.php';
+
 	session_start();
 	if($_SESSION['user']){
 		$user=$_SESSION['user'];
@@ -16,8 +20,8 @@
 			if($_SERVER['REQUEST_METHOD']=='GET' && $_GET['coursename']){
 				$coursename=mysql_real_escape_string($_GET['coursename']);
 
-				mysql_connect("127.0.0.1","root","");
-				mysql_select_db("bsp_db");
+				mysql_connect($DB_HOST,$DB_USER,$DB_PASS);
+				mysql_select_db($DB);
 				$query=mysql_query("Select * from courses where coursename='$coursename'");
 
 

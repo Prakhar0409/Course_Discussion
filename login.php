@@ -1,3 +1,7 @@
+<?php 
+include 'credentials.php';
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -46,7 +50,9 @@
             <li><a href="./register.php">Signup</a></li>
             	
             
-            <li class="dropdown">
+
+            
+         <!--    <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
@@ -57,7 +63,9 @@
                 <li><a href="#">Separated link</a></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
+            </li> -->
+
+
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -94,7 +102,7 @@
 							<p class="text-center text-muted">BSP RULES are as follows:</p>
 							<hr>
 							
-							<form method="post">
+							<form method="post" action="">
 								<div class="top-margin">
 									<label>Username/Email <span class="text-danger">*</span></label>
 									<input type="text" name="username" class="form-control">
@@ -216,13 +224,16 @@
 
 <?php
 	if($_SERVER["REQUEST_METHOD"]=="POST"){
+		//session_destroy();
+
 		session_start();
+		unset($_SESSION['user']);
 
 		$username=mysql_real_escape_string($_POST["username"]);
 		$password=mysql_real_escape_string($_POST["password"]);
 
-		mysql_connect("127.0.0.1","root","") or die(mysql_error());
-		mysql_select_db("bsp_db") or die("Unable to connect ot the database");
+		mysql_connect($DB_HOST,$DB_USER,$DB_PASS) or die(mysql_error());
+		mysql_select_db($DB) or die("Unable to connect ot the database");
 		$query=mysql_query("select * from users where BINARY username='$username' and password='$password'");
 		$exist=mysql_num_rows($query);
 		if($exist>0){

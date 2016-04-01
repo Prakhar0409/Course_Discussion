@@ -1,4 +1,7 @@
 <?php
+ 
+	include 'credentials.php';
+
 	session_start();
 	if($_SESSION['user']){
 		$user=$_SESSION['user'];
@@ -12,6 +15,7 @@
 				$coursename=mysql_real_escape_string($_GET['coursename']);
 			}else{
 				echo "Go back and select a calid course name or number";
+				header("location: ./home.php");
 			}
 ?>
 
@@ -61,10 +65,11 @@
           <ul class="nav navbar-nav">
             <li class="active"><a href="./index.php">Home</a></li>
             
-            <li><a href="./register.php">Signup</a></li>
+            <!-- <li><a href="./register.php">Signup</a></li> -->
             	
-            
-            <li class="dropdown">
+            <li><a href="./logout.php">Logout</a></li>
+
+           <!--  <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><a href="#">Action</a></li>
@@ -73,7 +78,9 @@
                 <li role="separator" class="divider"></li>
                 <li class="dropdown-header">Nav header</li>
                 <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
+                <li><a href="#">One more separated link</a></li> -->
+
+
               </ul>
             </li>
           </ul>
@@ -107,17 +114,22 @@
 <?php
 	
 
-				mysql_connect("127.0.0.1","root","");
-				mysql_select_db("bsp_db");
+				mysql_connect($DB_HOST,$DB_USER,$DB_PASS);
+				mysql_select_db($DB);
 				$query=mysql_query("Select * from courses where coursename='$coursename'");
 
 
 				//echo "<span class=''>"
+				$flagCourseFound = false;
 				while($row=mysql_fetch_array($query)){
 				//	print "Course Name: " .$row['coursename']. "<br/>";
+					$flagCourseFound = true;
 					print "Details : ". $row['details']. "<br/>";
 					print "Overlaps with : ". $row['overlaps']. "<br/>";
 					print "Pre requisites: ". $row['prereq']. "<br/>";
+				}
+				if($flagCourseFound == false){
+					header("location: ./home.php");
 				}
 
 
@@ -168,7 +180,7 @@
 	<br/>
 		<!-- <p>Rate:</p> -->
 		<form method='POST' action='post_ratings.php'>
-			<input	type="number" name="rating" placeholder="Rating">
+			<input	type="number" name="rating" min="1" max="5" placeholder="Rate">
 			<input	type="text" name="coursename" hidden="hidden" value=<?php echo $coursename ?>>
 			<!-- <input	type="text" name="username" hidden="hidden" value=<?php echo $user ?>> -->
 			
